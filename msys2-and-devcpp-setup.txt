@@ -1,0 +1,30 @@
+Download msys2 from:
+        https://www.msys2.org/
+
+Install msys2 in the default folder, then run these commands, closing the terminal after each one
+
+        pacman -Sy pacman
+
+        pacman -Syu
+
+        pacman -Su
+
+        pacman -S mingw64/mingw-w64-x86_64-SDL2_ttf mingw64/mingw-w64-x86_64-SDL2_gfx mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-gdb mingw64/mingw-w64-x86_64-gcc-libs mingw64/mingw-w64-x86_64-make
+
+Download DevCPP from:
+        https://www.bloodshed.net/dev/devcpp.html
+Direct link:
+        http://prdownloads.sourceforge.net/dev-cpp/devcpp-4.9.9.2_nomingw_setup.exe
+
+In DevCPP (see the devcpp-config/ folder for screenshots):
+- Open the options and add a new compiler from folder:
+        C:\msys64\mingw64
+- Open the options and add this global include dir:
+        C:\msys64\mingw64\include\SDL2
+- Add a new project
+  - add .c and .h files from sketchbook/ to it
+  - add sketchbook/sta to include dirs.
+- Open the project options and add these cflags to the project:
+        -std=c11
+- Open the project options and add these linker flags to the project:
+        -lm -lSDL2_gfx -lSDL2_ttf -lmingw32 -lSDL2main -lSDL2 -mwindows
