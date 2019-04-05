@@ -1,7 +1,8 @@
 Download msys2 from:
         https://www.msys2.org/
 
-Install msys2 in the default folder, then run these commands, closing the terminal after each one
+Install msys2 in the default folder, then run these commands in "Msys2
+Shell", closing the terminal after each one
 
         pacman -Sy pacman
 
@@ -17,9 +18,10 @@ Direct link:
         http://prdownloads.sourceforge.net/dev-cpp/devcpp-4.9.9.2_nomingw_setup.exe
 
 In DevCPP (see the devcpp-config/ folder for screenshots):
-- Open the options and add a new compiler from folder:
+- Open Tools -> Compiler Options, and add a new compiler from folder (rightmost green plus button in the "Compiler Options" screen):
         C:\msys64\mingw64
-- Open the options and add this global include dir:
+- On the same "Compiler Options" screen, name the compiler (green arrow
+  button) and add this global C include dir (Directories => C Includes):
         C:\msys64\mingw64\include\SDL2
 - Add a new project
   - add .c and .h files from sketchbook/ to it
