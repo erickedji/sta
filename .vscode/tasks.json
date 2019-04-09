@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build project with gcc",
+      "command": "/usr/bin/make ${fileBasenameNoExtension}",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "shell",
+      "label": "Launch project",
+      "command": "/usr/bin/make ${fileBasenameNoExtension} && ${workspaceFolder}/${fileBasenameNoExtension}",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ],
+  "version": "2.0.0"
+}

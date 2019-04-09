@@ -3,12 +3,14 @@ CC=gcc
 CFLAGS=-Ista -fdiagnostics-color=always -Wall -std=c11 $(shell sdl2-config --cflags)
 LIBS=-lm -lSDL2_gfx -lSDL2_ttf $(shell sdl2-config --libs)
 
+DRAWINGS=$(shell ls *.c | sed 's/\.c$$//')
+
 all: project
 
 %.o: %.c %.h
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-project: project.o sta/drawing.o sta/input.o sta/misc.o sta/sketchbook.o
+$(DRAWINGS): %: %.o sta/drawing.o sta/input.o sta/misc.o sta/sketchbook.o
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .SILENT:
