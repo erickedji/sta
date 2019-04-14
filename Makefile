@@ -4,6 +4,7 @@ CFLAGS=-Ista -fdiagnostics-color=always -Wall -std=c11 $(shell sdl2-config --cfl
 LIBS=-lm -lSDL2_gfx -lSDL2_ttf $(shell sdl2-config --libs)
 
 DRAWINGS=$(shell ls *.c | sed 's/\.c$$//')
+SHOTS=$(shell ls *.c | sed 's/\.c$$/.shots.gif/')
 
 all: project
 
@@ -18,12 +19,13 @@ $(DRAWINGS): %: %.o sta/drawing.o sta/input.o sta/misc.o sta/sketchbook.o
 clean:
 	rm -f *.o sta/*.o project
 	rm -f shots/*.bmp
-	
-.PHONY: shots
-shots: project
+
+.PHONY: $(SHOTS)
+$(SHOTS): %.shots.gif: %
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 	rm -f shots/*.bmp
-	./project -s
+	./$^ -s
 	echo "combining shots (this can take a while)..."
-	convert -delay 4 -loop 0 shots/*.bmp shots.gif # this needs image magick installed
-	echo "result written to shots.gif"
+	convert -delay 4 -loop 0 shots/*.bmp $@ # this needs image magick installed
+	echo "result written to $@"
 	rm -f shots/*.bmp
