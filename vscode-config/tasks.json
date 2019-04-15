@@ -16,7 +16,7 @@
     {
       "type": "shell",
       "label": "Launch project",
-      "command": "/usr/bin/make ${fileBasenameNoExtension} && ${workspaceFolder}/${fileBasenameNoExtension}",
+      "command": "/usr/bin/make $(echo ${fileDirname}/${fileBasenameNoExtension} | sed 's|${workspaceFolder}/||') && ${fileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -29,7 +29,7 @@
     {
       "type": "shell",
       "label": "Create shots gif",
-      "command": "/usr/bin/make ${fileBasenameNoExtension}.shots.gif && eog ${fileBasenameNoExtension}.shots.gif",
+      "command": "/usr/bin/make $(echo ${fileDirname}/${fileBasenameNoExtension} | sed 's|${workspaceFolder}/||').shots.gif && eog $(echo ${fileDirname}/${fileBasenameNoExtension} | sed 's|${workspaceFolder}/||').shots.gif",
       "args": [],
       "options": {
         "cwd": "${workspaceFolder}"
