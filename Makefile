@@ -3,8 +3,8 @@ CC=gcc
 CFLAGS=-Ista -fdiagnostics-color=always -Wall -std=c11 $(shell sdl2-config --cflags)
 LIBS=-lm -lSDL2_gfx -lSDL2_ttf $(shell sdl2-config --libs)
 
-DRAWINGS=$(shell ls *.c | sed 's/\.c$$//')
-SHOTS=$(shell ls *.c | sed 's/\.c$$/.shots.gif/')
+DRAWINGS=$(shell find . -name '*.c' | sed 's/\.c$$//')
+SHOTS=$(shell find . -name '*.c' | sed 's/\.c$$/.shots.gif/')
 
 all: project
 
