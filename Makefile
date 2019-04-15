@@ -17,7 +17,7 @@ $(DRAWINGS): %: %.o sta/drawing.o sta/input.o sta/misc.o sta/sketchbook.o
 .SILENT:
 .PHONY: clean
 clean:
-	rm -f *.o sta/*.o $(DRAWINGS)
+	rm -f $(shell find . -iname '*.o') $(DRAWINGS)
 	rm -f shots/*.bmp
 
 .PHONY: $(SHOTS)
